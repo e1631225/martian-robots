@@ -1,6 +1,9 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tr.com.martianrobots.Position;
+
+import tr.com.martianrobots.command.Command;
+import tr.com.martianrobots.util.Constants;
+import tr.com.martianrobots.util.Position;
 import tr.com.martianrobots.command.ForwardCommand;
 import tr.com.martianrobots.command.LeftCommand;
 import tr.com.martianrobots.command.RightCommand;
@@ -55,5 +58,43 @@ public class DirectionTest {
         forwardCommand.applyCommand(position);
         assertEquals(3, position.getX());
 
+    }
+
+    @Test
+    public void circle() {
+        Position position = new Position(1, 1, Direction.EAST);
+
+        ForwardCommand forwardCommand = new ForwardCommand();
+        LeftCommand leftCommand = new LeftCommand();
+
+        forwardCommand.applyCommand(position);
+        assertEquals(position.getX(), 2);
+
+        leftCommand.applyCommand(position);
+        assertEquals(position.getDirection(), Direction.NORTH);
+
+        forwardCommand.applyCommand(position);
+        assertEquals(position.getY(), 2);
+
+        leftCommand.applyCommand(position);
+        assertEquals(position.getDirection(), Direction.WEST);
+
+        forwardCommand.applyCommand(position);
+        assertEquals(position.getX(), 1);
+
+        leftCommand.applyCommand(position);
+        assertEquals(position.getDirection(), Direction.SOUTH);
+    }
+
+    @Test
+    public void checkInBoundaries() {
+        Position position = new Position(1, 1, Direction.WEST);
+
+        Command leftCommand = new LeftCommand();
+        leftCommand.applyCommand(position);
+        assertTrue(Constants.LOWER_X_BOUND <= position.getX());
+
+        leftCommand.applyCommand(position);
+        assertFalse(Constants.LOWER_X_BOUND > position.getX());
     }
 }

@@ -1,7 +1,6 @@
 package tr.com.martianrobots.command;
 
-import tr.com.martianrobots.Position;
-import tr.com.martianrobots.enums.Direction;
+import tr.com.martianrobots.util.Position;
 
 public class ForwardCommand implements Command {
     @Override

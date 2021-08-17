@@ -1,6 +1,6 @@
 package tr.com.martianrobots.command;
 
-import tr.com.martianrobots.Position;
+import tr.com.martianrobots.util.Position;
 import tr.com.martianrobots.enums.Direction;
 
 public class LeftCommand implements Command {

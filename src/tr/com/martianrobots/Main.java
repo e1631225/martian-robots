@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 import tr.com.martianrobots.util.Constants;
 import tr.com.martianrobots.util.Pair;
+import tr.com.martianrobots.util.Position;
 
 public class Main {
 
@@ -16,13 +17,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
-        System.out.println(s);
 
         String[] mapBorderStringArray = s.split(" ");
         Constants.UPPER_X_BOUND = Integer.parseInt(mapBorderStringArray[0]);
         Constants.UPPER_Y_BOUND = Integer.parseInt(mapBorderStringArray[1]);
-
-        System.out.println("x: " + Constants.UPPER_X_BOUND + " y: " + Constants.UPPER_Y_BOUND);
 
         while (!(s = scanner.nextLine()).trim().equals("")) {
             boolean isLost = false;

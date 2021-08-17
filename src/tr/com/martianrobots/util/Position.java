@@ -1,4 +1,4 @@
-package tr.com.martianrobots;
+package tr.com.martianrobots.util;
 
 import tr.com.martianrobots.enums.Direction;
 
