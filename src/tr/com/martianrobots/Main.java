@@ -8,40 +8,43 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        String s = br.readLine();
-//        System.out.println(s);
-//
-//        String[] mapBorderStringArray = s.split(" ");
-//        int boundX = Integer.parseInt(mapBorderStringArray[0]);
-//        int boundY = Integer.parseInt(mapBorderStringArray[1]);
-//
-//        System.out.println("x: " + boundX + " y: " + boundY);
-//
-//        s = br.readLine();
-//        String[] initialPositionStringArray = s.split(" ");
-//        System.out.println(s);
-//
-//        s = br.readLine();
-        String s = "FFFFFFFFF";
-        char[] commandListCharArray = s.toCharArray();
-        List<Command> commandList = new ArrayList<>();
-        for(char c : commandListCharArray) {
-            commandList.add(Constants.commandCreatorDictionary.get(Character.toString(c)).createCommand());
-        }
-        Position position = new Position(0, 0, Direction.NORTH);
-        for (Command command : commandList) {
-            if (!checkRobotIsInBoundries(command, position)) {
-                break;
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        System.out.println(s);
+
+        String[] mapBorderStringArray = s.split(" ");
+        Constants.UPPER_X_BOUND = Integer.parseInt(mapBorderStringArray[0]);
+        Constants.UPPER_Y_BOUND = Integer.parseInt(mapBorderStringArray[1]);
+
+        System.out.println("x: " + Constants.UPPER_X_BOUND + " y: " + Constants.UPPER_Y_BOUND);
+
+        while (!(s = scanner.nextLine()).trim().equals("")) {
+            String[] initialPositionStringArray = s.split(" ");
+            Position position = new Position(Integer.parseInt(initialPositionStringArray[0]),
+                    Integer.parseInt(initialPositionStringArray[1]),
+                    Constants.directionMap.get(initialPositionStringArray[2]));
+
+            s = scanner.nextLine();
+            char[] commandListCharArray = s.toCharArray();
+            List<Command> commandList = new ArrayList<>();
+            for (char c : commandListCharArray) {
+                commandList.add(Constants.commandCreatorDictionary.get(Character.toString(c)).createCommand());
             }
-            command.applyCommand(position);
+
+            for (Command command : commandList) {
+                if (!checkRobotIsInBoundries(command, position)) {
+                    break;
+                }
+                command.applyCommand(position);
+                //System.out.println(position.getX() + " " + position.getY() + " " + position.getDirection().getCode());
+            }
             System.out.println(position.getX() + " " + position.getY() + " " + position.getDirection().getCode());
         }
-        System.out.println(position.getX() + " " + position.getY() + " " + position.getDirection().getCode());
     }
 
     /***
