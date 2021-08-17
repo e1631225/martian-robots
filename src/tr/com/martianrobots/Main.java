@@ -1,4 +1,4 @@
-package tr.com.suleyman;
+package tr.com.martianrobots;
 
 public class Main {
 
