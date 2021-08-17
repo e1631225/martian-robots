@@ -2,10 +2,9 @@ package tr.com.martianrobots.command;
 
 import tr.com.martianrobots.Position;
 
-public class Left implements Command {
-
+public class ForwardCommand implements Command {
     @Override
-    public void move(Position position) {
+    public void applyCommand(Position position) {
 
     }
 }
