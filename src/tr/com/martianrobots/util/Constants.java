@@ -1,4 +1,4 @@
-package tr.com.martianrobots;
+package tr.com.martianrobots.util;
 
 import tr.com.martianrobots.command.creator.CommandCreator;
 import tr.com.martianrobots.command.creator.ForwardCommandCreator;
