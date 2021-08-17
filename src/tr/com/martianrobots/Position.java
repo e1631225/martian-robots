@@ -13,6 +13,12 @@ public class Position {
         this.direction = direction;
     }
 
+    public Position(Position p) {
+        this.x = p.getX();
+        this.y = p.getY();
+        this.direction = p.getDirection();
+    }
+
     public int getX() {
         return x;
     }

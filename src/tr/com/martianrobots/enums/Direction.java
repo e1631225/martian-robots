@@ -2,7 +2,7 @@ package tr.com.martianrobots.enums;
 
 public enum Direction {
 
-    NORTH("N"), EAST("E"), SOUTH("S"), WEST("S");
+    NORTH("N"), EAST("E"), SOUTH("S"), WEST("W");
 
     private String code;
 

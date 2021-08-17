@@ -20,5 +20,10 @@ public class Constants {
     public static final int MAX_INSTRUCTION_STRING_LENGTH = 100;
     public static final String LOST = "LOST";
 
+    public static final int LOWER_X_BOUND = 0;
+    public static final int LOWER_Y_BOUND = 0;
+    public static int UPPER_X_BOUND = 5;
+    public static int UPPER_Y_BOUND = 5;
+
 
 }
